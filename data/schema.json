@@ -2923,14 +2923,6 @@
               "type": "str"
             },
             {
-              "doc": "Base-64 encoded host certificate",
-              "label": "Certificate",
-              "multivalue": true,
-              "name": "usercertificate",
-              "required": false,
-              "type": "bytes"
-            },
-            {
               "label": "Principal name",
               "name": "krbcanonicalname",
               "required": false,

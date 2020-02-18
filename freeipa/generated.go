@@ -80694,12 +80694,6 @@ Random password
     Randompassword *string `json:"randompassword,omitempty"`
   
     /*
-Certificate
-Base-64 encoded host certificate
-    */
-    Usercertificate *[]string `json:"usercertificate,omitempty"`
-  
-    /*
 Principal name
 
     */
@@ -80874,8 +80868,6 @@ type jsonHost struct {
     Random interface{} `json:"random"`
   
     Randompassword interface{} `json:"randompassword"`
-  
-    Usercertificate interface{} `json:"usercertificate"`
   
     Krbcanonicalname interface{} `json:"krbcanonicalname"`
   
@@ -81260,38 +81252,6 @@ func (out *Host) UnmarshalJSON(data []byte) error {
         
       } else {
         return fmt.Errorf("unexpected value for field Randompassword: %v (%v)", raw, reflect.TypeOf(raw))
-      }
-    
-  }
-  
-  if in.Usercertificate != nil {
-    raw := in.Usercertificate
-    plainV, plainOk := raw.(string)
-    sliceWrapperV, sliceWrapperOk := raw.([]interface{})
-    var sliceV []string
-    sliceOk := sliceWrapperOk
-    if sliceWrapperOk {
-      for _, rawItem := range sliceWrapperV {
-        
-        itemV, itemOk := rawItem.(string)
-        
-        if !itemOk {
-          sliceOk = false
-          break
-        }
-        
-        sliceV = append(sliceV, itemV)
-        
-      }
-    }
-    
-      if plainOk {
-        out.Usercertificate = &[]string{plainV}
-      } else if sliceOk {
-        
-        out.Usercertificate = &sliceV
-      } else {
-        return fmt.Errorf("unexpected value for field Usercertificate: %v (%v)", raw, reflect.TypeOf(raw))
       }
     
   }
